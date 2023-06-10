@@ -2,6 +2,7 @@ import React from 'react';
 import NewInventoryForm from './NewInventoryForm';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail'; 
+import EditInventoryForm from './EditInventoryForm';
 
 class InventoryControl extends React.Component {
 
@@ -10,14 +11,15 @@ class InventoryControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       mainProductList: [],
-      selectedProduct: null
+      selectedProduct: null,
+      editing: false
     };
   }
   handleClick = () => {
-    if (this.state.selectedTicket != null) {
+    if (this.state.selectedProduct != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedTicket: null
+        selectedProduct: null
       });
     } else {
       this.setState(prevState => ({
@@ -48,15 +50,25 @@ class InventoryControl extends React.Component {
     });
   }
 
+  handleEditClick = () => {
+
+    this.setState({editing: true});
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
     // let addProductButton = null; // new code
-    if (this.state.selectedProduct != null) {
+      if (this.state.editing) {
+        currentlyVisibleState = <EditInventoryForm product={this.state.selectedProduct} />
+        buttonText= "Return to Product List";
+      }
+      else if (this.state.selectedProduct != null) {
       currentlyVisibleState = <InventoryDetail 
       product={this.state.selectedProduct}
       onBackToList={this.handleBackToList}
-      onDeleteProduct={this.handleDeletingProduct} />
+      onDeleteProduct={this.handleDeletingProduct}
+      onClickingEdit = {this.handleEditClick} />
     }
     else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewInventoryForm onNewInventoryCreation={this.handleAddingNewProductToList}/>;

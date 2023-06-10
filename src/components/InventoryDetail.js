@@ -12,6 +12,7 @@ function InventoryDetail(props) {
       <p>Roast: {product.roast}</p>
       <p>Price: ${product.price}</p>
       <button onClick={onBackToList}>Back to List</button>
+      <button onClick={ props.onClickingEdit }>Update Product</button>
       <button onClick={() => onDeleteProduct(product.id)}>Delete Product</button>
     </React.Fragment>
   );
@@ -20,7 +21,8 @@ function InventoryDetail(props) {
 InventoryDetail.propTypes = {
   product: PropTypes.object,
   onBackToList: PropTypes.func,
-  onDeleteProduct: PropTypes.func
+  onDeleteProduct: PropTypes.func,
+  onClickingEdit: PropTypes.func
 };
 
 export default InventoryDetail;
