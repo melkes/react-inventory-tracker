@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function InventoryDetail(props) {
-  const { product, onBackToList } = props;
+  const { product, onBackToList, onDeleteProduct} = props;
 
   return (
     <React.Fragment>
@@ -11,14 +11,16 @@ function InventoryDetail(props) {
       <p>Origin: {product.origin}</p>
       <p>Roast: {product.roast}</p>
       <p>Price: ${product.price}</p>
-      <button onClick={onBackToList}>Back to List</button> {/* Add this button */}
+      <button onClick={onBackToList}>Back to List</button>
+      <button onClick={() => onDeleteProduct(product.id)}>Delete Product</button>
     </React.Fragment>
   );
 }
 
 InventoryDetail.propTypes = {
   product: PropTypes.object,
-  onBackToList: PropTypes.func
+  onBackToList: PropTypes.func,
+  onDeleteProduct: PropTypes.func
 };
 
 export default InventoryDetail;

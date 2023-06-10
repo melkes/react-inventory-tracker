@@ -40,6 +40,14 @@ class InventoryControl extends React.Component {
     this.setState({ selectedProduct: null });
   };
 
+  handleDeletingProduct = (id) => {
+    const newMainProductList = this.state.mainProductList.filter(product => product.id !== id);
+    this.setState({
+      mainProductList: newMainProductList,
+      selectedProduct: null
+    });
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -47,7 +55,8 @@ class InventoryControl extends React.Component {
     if (this.state.selectedProduct != null) {
       currentlyVisibleState = <InventoryDetail 
       product={this.state.selectedProduct}
-      onBackToList={this.handleBackToList} />;
+      onBackToList={this.handleBackToList}
+      onDeleteProduct={this.handleDeletingProduct} />
     }
     else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewInventoryForm onNewInventoryCreation={this.handleAddingNewProductToList}/>;
