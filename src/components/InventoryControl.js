@@ -19,7 +19,8 @@ class InventoryControl extends React.Component {
     if (this.state.selectedProduct != null) {
       this.setState({
         formVisibleOnPage: false,
-        selectedProduct: null
+        selectedProduct: null,
+        editing: false
       });
     } else {
       this.setState(prevState => ({
@@ -55,12 +56,25 @@ class InventoryControl extends React.Component {
     this.setState({editing: true});
   }
 
+  handleEditingProductInList = (productToEdit) => {
+    const editedMainProductList = this.state.mainProductList
+      .filter(product => product.id !== this.state.selectedProduct.id)
+      .concat(productToEdit);
+    this.setState({
+        mainProductList: editedMainProductList,
+        editing: false,
+        selectedProduct: null
+      });
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
     // let addProductButton = null; // new code
       if (this.state.editing) {
-        currentlyVisibleState = <EditInventoryForm product={this.state.selectedProduct} />
+        currentlyVisibleState = <EditInventoryForm 
+        product = {this.state.selectedProduct}
+        onEditProduct = {this.handleEditingProductInList} />
         buttonText= "Return to Product List";
       }
       else if (this.state.selectedProduct != null) {
