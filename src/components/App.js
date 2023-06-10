@@ -7,8 +7,6 @@ function App(){
     <React.Fragment>
       <Header />
       <InventoryControl />
-
-
     </React.Fragment>
   );
 }
