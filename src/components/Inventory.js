@@ -17,4 +17,4 @@ Inventory.propTypes = {
     price: PropTypes.string
     };
 
-export default Ticket;
+export default Inventory;
