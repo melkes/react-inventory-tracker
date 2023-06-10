@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Inventory(props){
   return (
@@ -8,5 +9,12 @@ function Inventory(props){
     </React.Fragment>
   );
 }
+
+Inventory.propTypes = {
+    name: PropTypes.string,
+    origin: PropTypes.string,
+    roast: PropTypes.string,
+    price: PropTypes.string
+    };
 
 export default Ticket;
