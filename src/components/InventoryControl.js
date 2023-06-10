@@ -48,7 +48,7 @@ class InventoryControl extends React.Component {
     } else {
       currentlyVisibleState = <InventoryList 
       inventoryList={this.state.mainProductList} 
-      onPruductSelection={this.handleChangingSelectedProduct} />;
+      onProductSelection={this.handleChangingSelectedProduct} />;
       buttonText = "Add Product"; 
     } 
     return (
