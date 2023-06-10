@@ -35,12 +35,19 @@ class InventoryControl extends React.Component {
     const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
     this.setState({selectedProduct: selectedProduct});
   }
+
+  handleBackToList = () => {
+    this.setState({ selectedProduct: null });
+  };
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
     // let addProductButton = null; // new code
     if (this.state.selectedProduct != null) {
-      currentlyVisibleState = <InventoryDetail selectedProduct={this.state.selectedProduct} />;
+      currentlyVisibleState = <InventoryDetail 
+      product={this.state.selectedProduct}
+      onBackToList={this.handleBackToList} />;
     }
     else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewInventoryForm onNewInventoryCreation={this.handleAddingNewProductToList}/>;
