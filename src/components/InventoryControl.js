@@ -1,6 +1,7 @@
 import React from 'react';
 import NewInventoryForm from './NewInventoryForm';
 import InventoryList from './InventoryList';
+import InventoryDetail from './InventoryDetail'; 
 
 class InventoryControl extends React.Component {
 
@@ -8,13 +9,21 @@ class InventoryControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainProductList: []
+      mainProductList: [],
+      selectedProduct: null
     };
   }
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedTicket != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedTicket: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
   }
   
   handleAddingNewProductToList = (newProduct) => {
@@ -22,16 +31,24 @@ class InventoryControl extends React.Component {
     this.setState({mainProductList: newMainProductList,
     formVisibleOnPage: false});
   }
-
+  handleChangingSelectedProduct = (id) => {
+    const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
+    this.setState({selectedProduct: selectedProduct});
+  }
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
     // let addProductButton = null; // new code
-    if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewInventoryForm onNewProductCreation={this.handleAddingNewProductToList}/>;
+    if (this.state.selectedProduct != null) {
+      currentlyVisibleState = <InventoryDetail selectedProduct={this.state.selectedProduct} />;
+    }
+    else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewInventoryForm onNewInventoryCreation={this.handleAddingNewProductToList}/>;
       buttonText = "Return to Product List"; 
     } else {
-      currentlyVisibleState = <InventoryList inventoryList={this.state.mainProductList} />;
+      currentlyVisibleState = <InventoryList 
+      inventoryList={this.state.mainProductList} 
+      onPruductSelection={this.handleChangingSelectedProduct} />;
       buttonText = "Add Product"; 
     } 
     return (
