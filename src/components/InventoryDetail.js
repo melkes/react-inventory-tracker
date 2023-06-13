@@ -14,6 +14,7 @@ function InventoryDetail(props) {
       <button onClick={onBackToList}>Back to List</button>
       <button onClick={ props.onClickingEdit }>Update Product</button>
       <button onClick={() => onDeleteProduct(product.id)}>Delete Product</button>
+      <button>I'm a button</button>
     </React.Fragment>
   );
 }

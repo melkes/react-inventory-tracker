@@ -2,28 +2,6 @@ import React from "react";
 import Inventory from "./Inventory";
 import PropTypes from "prop-types";
 
-// Dummy inventory data
-// const mainInventoryList = [
-//   {
-//     name: 'Kona',
-//     origin: 'Hawaii',
-//     roast: 'Light',
-//     price: '$15'
-//   },
-//   {
-//     name: 'French Roast',
-//     origin: 'Blend',
-//     roast: 'Dark',
-//     price: '$13'
-//   },
-//   {
-//     name: 'Antigua',
-//     origin: 'Guatemala',
-//     roast: 'Medium',
-//     price: '$17'
-//   }
-// ];
-
 function InventoryList(props){
   return (
     <React.Fragment>
@@ -37,14 +15,36 @@ function InventoryList(props){
       price={inventory.price}
       id={inventory.id}
       key={inventory.id}/>
-  )}
+      )}
   </React.Fragment>
     );
   };
-
+  
   // Add propTypes for inventoryList.
   InventoryList.propTypes = {
     inventoryList: PropTypes.array,
     onProductSelection: PropTypes.func
   };  
   export default InventoryList; 
+  
+  // Dummy inventory data
+  // const mainInventoryList = [
+  //   {
+  //     name: 'Kona',
+  //     origin: 'Hawaii',
+  //     roast: 'Light',
+  //     price: '$15'
+  //   },
+  //   {
+  //     name: 'French Roast',
+  //     origin: 'Blend',
+  //     roast: 'Dark',
+  //     price: '$13'
+  //   },
+  //   {
+  //     name: 'Antigua',
+  //     origin: 'Guatemala',
+  //     roast: 'Medium',
+  //     price: '$17'
+  //   }
+  // ];
