@@ -13,6 +13,7 @@ function Inventory(props){
       <p><em>{props.price}</em></p>
       </div>
       </div>
+      <hr />
     </React.Fragment>
   );
 }

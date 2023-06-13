@@ -13,7 +13,7 @@ code {
 }
 
 .container {
-  width: 100%;
+  max-width: 720px;
   padding-right: 1rem;
   padding-left: 1rem;
   margin-right: auto;

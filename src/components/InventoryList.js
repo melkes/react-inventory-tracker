@@ -3,6 +3,7 @@ import Inventory from "./Inventory";
 import PropTypes from "prop-types";
 
 function InventoryList(props){
+  
   return (
     <React.Fragment>
       <hr/>

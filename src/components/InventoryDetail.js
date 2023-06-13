@@ -6,6 +6,7 @@ function InventoryDetail(props) {
 
   return (
     <React.Fragment>
+      <hr />
       <h1>Product Details</h1>
       <h3>{product.name}</h3>
       <p>Origin: {product.origin}</p>
