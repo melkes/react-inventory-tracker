@@ -66,7 +66,20 @@ class InventoryControl extends React.Component {
         selectedProduct: null
       });
   }
-
+  handleDepletingInventory = (id)=> {
+    const selectedCoffee = this.state.mainCoffeeList.filter(coffee => coffee.id === id)[0];
+    const reducedCoffeeInventory = { ...selectedCoffee, qty: (selectedCoffee.qty === 0) ? 0 : selectedCoffee.qty - 1}
+    this.setState({selectedCoffee: selectedCoffee});
+    const reducedCoffeeInventoryList = this.state.mainCoffeeList
+                                  .filter(coffee => coffee.id !== reducedCoffeeInventory.id)
+                                  .concat(reducedCoffeeInventory);
+    this.setState({
+      mainCoffeeList : reducedCoffeeInventoryList,
+      editing: false,
+      selectedCoffee: null
+    });
+  }
+  
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
