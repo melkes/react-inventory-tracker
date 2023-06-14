@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
 function InventoryDetail(props) {
   const { product, onBackToList, onDeleteProduct} = props;
   const { inventory, changeInventory } = props;
