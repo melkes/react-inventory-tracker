@@ -3,16 +3,20 @@ import NewInventoryForm from './NewInventoryForm';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail'; 
 import EditInventoryForm from './EditInventoryForm';
+import useInventory from './useInventory';
 
 class InventoryControl extends React.Component {
 
   constructor(props) {
     super(props);
+    const { inventory, changeInventory } = useInventory();
     this.state = {
       formVisibleOnPage: false,
       mainProductList: [],
       selectedProduct: null,
-      editing: false
+      editing: false,
+      inventory,
+      changeInventory
     };
   }
   handleClick = () => {
@@ -83,6 +87,7 @@ class InventoryControl extends React.Component {
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
+    
     // let addProductButton = null; // new code
       if (this.state.editing) {
         currentlyVisibleState = <EditInventoryForm 
@@ -107,7 +112,12 @@ class InventoryControl extends React.Component {
       buttonText = "Add Product"; 
     } 
     return (
+      
       <React.Fragment>
+        <InventoryDetail
+        inventory={this.state.inventory}  
+        changeInventory={this.state.changeInventory}       
+        /> 
         {currentlyVisibleState}
        <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>

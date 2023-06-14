@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import useInventory from "./useInventory";
+
 
 function InventoryDetail(props) {
   const { product, onBackToList, onDeleteProduct} = props;
-  const {inventory, changeInventory} = useInventory();
+  const { inventory, changeInventory } = props;
   return (
     <React.Fragment>
       <hr />
@@ -16,6 +16,7 @@ function InventoryDetail(props) {
       <button onClick={onBackToList}>Back to List</button>
       <button onClick={ props.onClickingEdit }>Update Product</button>
       <button onClick={() => onDeleteProduct(product.id)}>Delete Product</button>
+      <p>Add to Inventory(click button)</p>
       <button onClick={changeInventory}>Inventory: {inventory}</button>
       
       </React.Fragment>
