@@ -93,7 +93,8 @@ class InventoryControl extends React.Component {
       product={this.state.selectedProduct}
       onBackToList={this.handleBackToList}
       onDeleteProduct={this.handleDeletingProduct}
-      onClickingEdit = {this.handleEditClick} />
+      onClickingEdit = {this.handleEditClick}
+      onSaleofProductPounds={this.handleSaleofProductPounds} />
     }
     else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewInventoryForm onNewInventoryCreation={this.handleAddingNewProductToList}/>;
