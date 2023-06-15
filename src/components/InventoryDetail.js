@@ -12,10 +12,10 @@ function InventoryDetail(props) {
       <p>Origin: {product.origin}</p>
       <p>Roast: {product.roast}</p>
       <p>Price: ${product.price}</p>
+      <p>Pounds remaining: {product.pounds}</p>
       <button onClick={onBackToList}>Back to List</button>
       <button onClick={ props.onClickingEdit }>Update Product</button>
       <button onClick={() => onDeleteProduct(product.id)}>Delete Product</button>
-      <button>I'm a button</button>
     </React.Fragment>
   );
 }

@@ -66,6 +66,17 @@ class InventoryControl extends React.Component {
         selectedProduct: null
       });
   }
+  
+  handleSaleofProductPounds = (productId) => {
+    const newMainProductList = this.state.mainProductList.map((product) => {
+      if (product.id === productId && product.pounds > 0) {
+        return { ...product, pounds: product.pounds - 1 };
+      } 
+      return product;
+    });
+    this.setState({ mainProductList: newMainProductList });
+  };
+
 
   render(){
     let currentlyVisibleState = null;
@@ -101,4 +112,5 @@ class InventoryControl extends React.Component {
     );
   }
 }
+
 export default InventoryControl;
