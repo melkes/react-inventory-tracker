@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import useInventory from "./useInventory";
 
 function InventoryDetail(props) {
   const { product, onBackToList, onDeleteProduct} = props;
-
+  const {inventory, changeInventory} = useInventory();
   return (
     <React.Fragment>
       <hr />
