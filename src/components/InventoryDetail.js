@@ -13,8 +13,9 @@ function InventoryDetail(props) {
       <p>Price: ${product.price}</p>
       <p>Pounds remaining: {product.pounds}</p>
       <p>
-        <button onClick={props.onSaleofProductPounds}>Sell 1 pound of product (remove 1 lb from remaining inventory)</button>
+        <button onClick={() => props.onSaleofProductPounds(product.id)}>Sell 1 pound of product (remove 1 lb from remaining inventory)</button>
       </p>
+      
       <button onClick={onBackToList}>Back to List</button>
       <button onClick={ props.onClickingEdit }>Update Product</button>
       <button onClick={() => onDeleteProduct(product.id)}>Delete Product</button>
@@ -26,8 +27,8 @@ InventoryDetail.propTypes = {
   product: PropTypes.object,
   onBackToList: PropTypes.func,
   onDeleteProduct: PropTypes.func,
-  onClickingEdit: PropTypes.func,
-  onSaleofProductPounds: PropTypes.func
+  onSaleofProductPounds: PropTypes.func,
+  onClickingEdit: PropTypes.func
 };
 
 export default InventoryDetail;
