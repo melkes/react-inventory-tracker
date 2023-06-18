@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function InventoryDetail(props) {
-  const { product, onBackToList, onDeleteProduct, onClickingEdit, onSaleofProductPounds } = props;
+  const { product, onBackToList, onSaleofProductPounds, onDeleteProduct, onClickingEdit} = props;
   return (
     <React.Fragment>
       <hr />
