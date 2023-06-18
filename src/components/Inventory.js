@@ -10,7 +10,7 @@ function Inventory(props){
       <div style={inventoryStyle} className="container">
       <div onClick={() => props.whenProductClicked(props.id)}>
       <h3>{props.name} / {props.origin} / {props.roast}</h3>
-      <p><em>{props.price}</em></p>
+      <p><em>${props.price}</em></p>
       </div>
       </div>
       <hr />
