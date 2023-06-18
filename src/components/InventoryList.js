@@ -15,7 +15,8 @@ function InventoryList(props){
       roast={inventory.roast}
       price={inventory.price}
       id={inventory.id}
-      key={inventory.id}/>
+      key={inventory.id}
+      pounds={inventory.pounds} />
       )}
   </React.Fragment>
     );

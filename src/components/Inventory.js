@@ -24,6 +24,7 @@ Inventory.propTypes = {
     roast: PropTypes.string,
     price: PropTypes.string,
     id: PropTypes.string,
+    pounds: PropTypes.number,
     whenProductClicked: PropTypes.func
     };
 

@@ -30,14 +30,22 @@ class InventoryControl extends React.Component {
   }
   
   handleAddingNewProductToList = (newProduct) => {
+    newProduct.pounds = 130;
     const newMainProductList = this.state.mainProductList.concat(newProduct);
-    this.setState({mainProductList: newMainProductList,
+    this.setState({
+      mainProductList: newMainProductList,
+      selectedProduct: null,
+      editing: false,
     formVisibleOnPage: false});
   }
+  
   handleChangingSelectedProduct = (id) => {
     const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
-    this.setState({selectedProduct: selectedProduct});
-  }
+    this.setState(prevState => ({
+      selectedProduct: selectedProduct,
+      mainProductList: prevState.mainProductList  // keep the existing product list
+    }));
+  };  
 
   handleBackToList = () => {
     this.setState({ selectedProduct: null });
@@ -67,16 +75,14 @@ class InventoryControl extends React.Component {
       });
   }
   
-
-  handleSaleofProductPounds = productId => {
-    const newMainProductList = this.state.mainProductList.filter(productFilter => productFilter.id === productId); 
-    const product = newMainProductList[0];
-    if (product.pounds > 0) {
-      product.pounds-=1;
+  handleSaleofProductPounds = () => {
+    const { selectedProduct } = this.state;
+    if (selectedProduct && selectedProduct.pounds > 0) {
+      const updatedProduct = { ...selectedProduct, pounds: selectedProduct.pounds - 1 };
+      this.setState({ selectedProduct: updatedProduct });
     }
-    this.setState ({ mainProductList: newMainProductList });
-    };
-  
+  };
+    
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
