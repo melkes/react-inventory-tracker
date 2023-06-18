@@ -67,27 +67,20 @@ class InventoryControl extends React.Component {
       });
   }
   
-  // handleSaleofProductPounds = (productId) => {
-  //   const newMainProductList = this.state.mainProductList.map((product) => {
-  //     if (product.id === productId && product.pounds > 0) {
-  //       return { ...product, pounds: product.pounds - 1 };
-  //     } 
-  //     return product;
-  //   });
-  //   this.setState({ mainProductList: newMainProductList });
-  // };
+
   handleSaleofProductPounds = productId => {
     this.setState(prevState => {
       const newMainProductList = prevState.mainProductList.map(product => {
         if (product.id === productId && product.pounds > 0) {
-          return {...product, pounds:product.pounds - 1};
+          return {...product, pounds: (product.pounds - 1)};
+
         }
           return product;
         });
       return { mainProductList: newMainProductList };
     });
     };
-    
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
